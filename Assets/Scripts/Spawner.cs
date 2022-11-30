@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [SerializeField] private GameObject Spawnable;
     [SerializeField] private float cooldownTimeInSeconds;
     [SerializeField] private int spawnLimit;
@@ -16,6 +16,10 @@ public class Spawner : MonoBehaviour
     private Vector3 playerDirection;
     private Vector3 correctedStart;
 
+    private void Awake()
+    {
+        player = GameObject.Find("ChadContainer");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,10 @@ public class Spawner : MonoBehaviour
             if ((spawned < spawnLimit) && (cooldown <= Time.time))
             {
                 Spawn();
+                if(spawned >= spawnLimit)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
         else
