@@ -1,20 +1,9 @@
 fileFormatVersion: 2
-guid: 0d6e4ece7f435af47bd3eaff9b3e48fb
+guid: 79f0ef907815b4e429498a70fd103114
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: 1155678684470276135
-    second: RIG_Chad|Default
-  - first:
-      74: 3175340180026879865
-    second: RIG_Chad|Run
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 4390fbfa1e6771f4abfd2e44aceb0fd5, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
