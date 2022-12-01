@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TransparentObjectHandler : MonoBehaviour
 {
-    private GameObject transparentObject;
     private List<GameObject> transparentObjects = new List<GameObject>();
 
     // Update is called once per frame
@@ -16,35 +15,26 @@ public class TransparentObjectHandler : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                // Check if the child (Mesh) of the parent (Collider) is a HideableObject
-                GameObject RayTarget = hit.collider.gameObject.transform.GetChild(0).gameObject;
+                GameObject RayTargetCollider = hit.collider.gameObject;
+                GameObject RayTargetMesh = RayTargetCollider.transform.GetChild(0).gameObject;
 
-                // Remove transparency if ray hits Player
-                if (RayTarget.tag != "HideableObject")
+                if (RayTargetMesh.tag != "HideableObject")
                 {
                     foreach (var transparent in transparentObjects)
-                        //SetOpacity(1.0f, transparent);
-                        transparent.SetActive(true);
+                    {
+                        transparent.GetComponent<MeshRenderer>().enabled = false;
+                        transparent.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+
                     transparentObjects.Clear();
                 }
                 else
                 {
-                    //SetOpacity(0.5f, RayTarget);
-                    RayTarget.SetActive(false);
-                    transparentObjects.Add(RayTarget);
+                    RayTargetCollider.GetComponent<MeshRenderer>().enabled = true;
+                    RayTargetMesh.SetActive(false);
+                    transparentObjects.Add(RayTargetCollider);
                 }
-
-                Debug.Log(RayTarget.name);
             }
         }
-    }
-
-    private void SetOpacity(float alpha, GameObject gameObject)
-    {
-        Color currentColor = gameObject.GetComponent<Renderer>().material.color;
-        float r = currentColor.r;
-        float g = currentColor.g;
-        float b = currentColor.b;
-        gameObject.GetComponent<Renderer>().material.color = new Color(r, g, b, alpha);
     }
 }

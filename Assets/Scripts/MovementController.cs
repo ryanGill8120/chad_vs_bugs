@@ -7,30 +7,36 @@ public class MovementController : MonoBehaviour
 {
     public GameObject CameraPivot;
     public GameObject ChadModel;
-    public float CameraSpeed;
+    public GameObject TOGGLE_ContinuousMovement;
     
     Vector3 clickPosition;
+    Vector3 LookDirection;
 
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        clickPosition = transform.position;
+        TrackMouse();
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        TrackMouse();
+
         if (Input.GetKeyDown(KeyCode.A))
             CameraPivot.transform.Rotate(Vector3.up * 90);
 
         if (Input.GetKeyDown(KeyCode.D))
             CameraPivot.transform.Rotate(-Vector3.up * 90);
 
-        if (Input.GetMouseButtonDown(0))
-            MovePlayer();
+        if (!TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButtonDown(0))
+            clickPosition = LookDirection;
+
+        else if (TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButton(0))
+            clickPosition = LookDirection;
     }
 
     private void FixedUpdate()
@@ -38,23 +44,17 @@ public class MovementController : MonoBehaviour
         rb.MovePosition(Vector3.MoveTowards(transform.position, clickPosition, 3 * Time.deltaTime));
     }
 
-    private void MovePlayer()
-    {
-        Plane plane = new Plane(Vector3.up, 0);
+    private void TrackMouse()
+    {   
+        RaycastHit RayTarget;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float distanceToPlane;
+        var GroundMask = 1 << 6;
 
-        /*Vector3 fwd = ChadModel.transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, fwd, 5))
-            Debug.Log("Object in front");*/
-
-        if (plane.Raycast(ray, out distanceToPlane))
+        if (Physics.Raycast(ray, out RayTarget, 100, GroundMask))
         {
-            var rayPosition = ray.GetPoint(distanceToPlane);
-            rayPosition.y = 0f;
+            LookDirection = new Vector3(RayTarget.point.x, transform.position.y, RayTarget.point.z);
 
-            clickPosition = rayPosition;
-            ChadModel.transform.LookAt(clickPosition);
+            ChadModel.transform.LookAt(LookDirection);
         }
     }
 
