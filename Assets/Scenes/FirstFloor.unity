@@ -455,6 +455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1771800183116826182, guid: f592275b2b2c73a44b8711923a97c29e,
+        type: 3}
+      propertyPath: TOGGLE_ThirdPerson
+      value: 
+      objectReference: {fileID: 1018020262}
     - target: {fileID: 2542733698417943904, guid: f592275b2b2c73a44b8711923a97c29e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1418,6 +1423,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1383664129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1454371686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2542733698581541812, guid: f592275b2b2c73a44b8711923a97c29e,
+    type: 3}
+  m_PrefabInstance: {fileID: 329487842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1583991151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2048,7 @@ MonoBehaviour:
   TOGGLE_ThirdPerson: {fileID: 1018020262}
   CameraOrtho: {fileID: 1643733893}
   CameraThirdPerson: {fileID: 329487843}
+  CameraPivot: {fileID: 1454371686}
   Paused: {fileID: 1187839939}
   MENU_Settings: {fileID: 463643307}
 --- !u!1 &1978757097

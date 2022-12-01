@@ -8,6 +8,7 @@ public class ToggleHandler : MonoBehaviour
     public GameObject TOGGLE_ThirdPerson;
     public GameObject CameraOrtho;
     public GameObject CameraThirdPerson;
+    public GameObject CameraPivot;
     public GameObject Paused;
     public GameObject MENU_Settings;
 
@@ -28,6 +29,7 @@ public class ToggleHandler : MonoBehaviour
         TOGGLE_ThirdPerson.SetActive(!TOGGLE_ThirdPerson.activeInHierarchy);
         CameraThirdPerson.SetActive(!CameraThirdPerson.activeInHierarchy);
         CameraOrtho.SetActive(!CameraOrtho.activeInHierarchy);
+        CameraPivot.transform.Rotate(Vector3.up * 0);
     }
 
     public void TogglePause()
