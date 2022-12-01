@@ -8,6 +8,10 @@ public class MovementController : MonoBehaviour
     public GameObject CameraPivot;
     public GameObject ChadModel;
     public GameObject TOGGLE_ContinuousMovement;
+    public GameObject TOGGLE_ThirdPerson;
+    public GameObject Paused;
+
+    public float RotateSpeed;
     
     Vector3 clickPosition;
     Vector3 LookDirection;
@@ -24,19 +28,34 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TrackMouse();
+        if (!Paused.activeSelf)
+        {
+            TrackMouse();
 
-        if (Input.GetKeyDown(KeyCode.A))
-            CameraPivot.transform.Rotate(Vector3.up * 90);
+            if (!TOGGLE_ThirdPerson.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.A))
+                    CameraPivot.transform.Rotate(Vector3.up * 90);
 
-        if (Input.GetKeyDown(KeyCode.D))
-            CameraPivot.transform.Rotate(-Vector3.up * 90);
+                if (Input.GetKeyDown(KeyCode.D))
+                    CameraPivot.transform.Rotate(-Vector3.up * 90);
+            }
 
-        if (!TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButtonDown(0))
-            clickPosition = LookDirection;
+            if (TOGGLE_ThirdPerson.activeSelf)
+            {
+                if (Input.GetKey(KeyCode.A))
+                    CameraPivot.transform.Rotate(-Vector3.up * RotateSpeed * Time.deltaTime);
 
-        else if (TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButton(0))
-            clickPosition = LookDirection;
+                if (Input.GetKey(KeyCode.D))
+                    CameraPivot.transform.Rotate(Vector3.up * RotateSpeed * Time.deltaTime);
+            }
+
+            if (!TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButtonDown(0))
+                clickPosition = LookDirection;
+
+            else if (TOGGLE_ContinuousMovement.activeSelf && Input.GetMouseButton(0))
+                clickPosition = LookDirection;
+        }
     }
 
     private void FixedUpdate()
