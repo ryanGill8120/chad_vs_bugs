@@ -5,9 +5,26 @@ using UnityEngine;
 
 public class HordeAI : MonoBehaviour
 {
-    public GameObject target;
-    public float speed = 1.5f;
-    
+    private GameObject target;
+    [SerializeField] private float speed = 1.5f;
+    [SerializeField] private int health;
+    [SerializeField] private float distance;
+    private enum TypeList
+    {
+        sugarAnt,
+        cockroach,
+        larva
+    };
+    [SerializeField] private TypeList list = new TypeList();
+
+
+    private void Awake()
+    {
+        //adding enemies to the level manager to track if there are any left.
+        LevelManager.instance.enemies.Add(gameObject);
+        target = GameObject.Find("ChadContainer");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +41,7 @@ public class HordeAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         moveToPlayer();
     }
 }

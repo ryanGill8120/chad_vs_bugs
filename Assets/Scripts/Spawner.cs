@@ -5,20 +5,22 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     private GameObject player;
+    [SerializeField] private GameObject playerPOS;
     [SerializeField] private GameObject Spawnable;
     [SerializeField] private float cooldownTimeInSeconds;
     [SerializeField] private int spawnLimit;
     [SerializeField] private float activationRange;
     private bool active;
-    private RaycastHit hit;
     private int spawned;
     private float cooldown;
-    private Vector3 playerDirection;
-    private Vector3 correctedStart;
+    //private RaycastHit hit;
+    //private Vector3 playerDirection;
+    //private Vector3 correctedStart;
 
     private void Awake()
     {
         player = GameObject.Find("ChadContainer");
+        LevelManager.instance.spawners.Add(gameObject);
     }
 
     // Start is called before the first frame update
@@ -41,6 +43,7 @@ public class Spawner : MonoBehaviour
                 Spawn();
                 if(spawned >= spawnLimit)
                 {
+                    LevelManager.instance.spawners.Remove(gameObject);
                     gameObject.SetActive(false);
                 }
             }
@@ -77,7 +80,7 @@ public class Spawner : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Vector3 direction = (playerPOS.transform.position - transform.position).normalized;
         Gizmos.DrawRay(transform.position, direction * activationRange);
     }
 
