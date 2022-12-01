@@ -16,6 +16,7 @@ public class TransparentObjectHandler : MonoBehaviour
         {
             if (hit.collider != null)
             {
+                // Check if the child (Mesh) of the parent (Collider) is a HideableObject
                 GameObject RayTarget = hit.collider.gameObject.transform.GetChild(0).gameObject;
 
                 // Remove transparency if ray hits Player
