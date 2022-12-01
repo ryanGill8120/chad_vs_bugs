@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2542733698417943911}
   - component: {fileID: 2542733698417943910}
   - component: {fileID: 2542733698417943909}
+  - component: {fileID: 1771800183116826182}
   m_Layer: 0
   m_Name: ChadContainer
   m_TagString: Untagged
@@ -45,10 +46,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2542733698417943905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d93b30c8854c046858076b898c3b55, type: 3}
+  m_Script: {fileID: 11500000, guid: 476597812e9c8b74ba5353214c4fce18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraPivot: {fileID: 2542733698581541812}
   ChadModel: {fileID: 3425254706868577023}
+  CameraSpeed: 5
 --- !u!54 &2542733698417943910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,6 +81,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.5, z: 0.3}
   m_Center: {x: 0, y: 0.259, z: 0}
+--- !u!114 &1771800183116826182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542733698417943905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1886002f1cd35b468af433359036108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2542733698581541812
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +116,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2542733698581541812}
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -109,7 +124,7 @@ Transform:
   - {fileID: 2542733698948705743}
   m_Father: {fileID: 2542733698417943904}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2542733698948705736
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,8 +151,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2542733698948705736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -22.61}
+  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalPosition: {x: -5, y: 4.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,10 +183,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 13
   field of view: 60
   orthographic: 1
-  orthographic size: 1.5
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -309,6 +324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chihuahua-Chad
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d6e4ece7f435af47bd3eaff9b3e48fb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d6e4ece7f435af47bd3eaff9b3e48fb, type: 3}
