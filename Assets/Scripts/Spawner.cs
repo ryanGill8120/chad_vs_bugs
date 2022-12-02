@@ -20,12 +20,13 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("ChadContainer");
-        LevelManager.instance.spawners.Add(gameObject);
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        LevelManager.instance.spawners.Add(gameObject);
         active = false;
         spawned = 0;
         cooldown = Time.time;
