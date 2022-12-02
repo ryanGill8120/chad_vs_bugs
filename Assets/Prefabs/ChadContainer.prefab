@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2542733698417943911}
   - component: {fileID: 2542733698417943910}
   - component: {fileID: 2542733698417943909}
+  - component: {fileID: 8359082885882998499}
+  - component: {fileID: 2642389005608570366}
   m_Layer: 0
   m_Name: ChadContainer
   m_TagString: Untagged
@@ -78,6 +80,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.5, z: 0.3}
   m_Center: {x: 0, y: 0.259, z: 0}
+--- !u!114 &8359082885882998499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542733698417943905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75a0b091313d044c9cbe40376baca4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChadModel: {fileID: 3425254706868577023}
+  LightCooldown: 2
+  HeavyCooldown: 10
+--- !u!114 &2642389005608570366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542733698417943905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59737e166c6ae884897a58ed3b46d358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chadStatus: {fileID: 8359082885882998499}
+  LightProjectile: {fileID: 7624317641137892756, guid: 7ec86af5b308edd43b0fd19b3e7e30f1,
+    type: 3}
 --- !u!1 &2542733698581541812
 GameObject:
   m_ObjectHideFlags: 0
