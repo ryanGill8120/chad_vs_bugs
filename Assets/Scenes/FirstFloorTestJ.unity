@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 128860562}
   - component: {fileID: 128860561}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: CLLDR_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChadModel: {fileID: 329487844}
+  CLLDR_Attack: {fileID: 0}
   maxFright: 5
   LightCooldown: 2
   HeavyCooldown: 10
@@ -3369,7 +3370,7 @@ GameObject:
   - component: {fileID: 344447047}
   - component: {fileID: 919132149365007637}
   m_Layer: 0
-  m_Name: MESH_Larva
+  m_Name: Larva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4839,7 +4840,7 @@ GameObject:
   - component: {fileID: 2823090746193983420}
   - component: {fileID: 1587545474111804200}
   m_Layer: 0
-  m_Name: default
+  m_Name: MESH_Larva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

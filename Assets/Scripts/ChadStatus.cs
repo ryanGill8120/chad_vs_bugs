@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ChadStatus : MonoBehaviour
 {
-
     [SerializeField]
     public GameObject ChadModel;
-
+    public GameObject CLLDR_Attack;
 
     public int Fright { get; set; }
     public int maxFright;
@@ -15,19 +14,10 @@ public class ChadStatus : MonoBehaviour
     public float LightCooldown = 2.0f;
     public float HeavyCooldown = 10.0f;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         Fright = maxFright;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     /*private void OnCollisionEnter(Collision collision)
@@ -40,9 +30,7 @@ public class ChadStatus : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Sphere")
-        {
+        if (other.gameObject.name == CLLDR_Attack.name)
             Debug.Log("Ew, hit by a larva!");
-        }
     }
 }

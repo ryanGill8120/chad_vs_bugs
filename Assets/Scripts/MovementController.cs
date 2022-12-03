@@ -12,11 +12,18 @@ public class MovementController : MonoBehaviour
     public GameObject Paused;
 
     public float RotateSpeed;
+
+    private Animator ChadAnimator;
     
     Vector3 clickPosition;
     Vector3 LookDirection;
 
     Rigidbody rb;
+
+    private void Awake()
+    {
+        ChadAnimator = gameObject.GetComponentInChildren<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +38,11 @@ public class MovementController : MonoBehaviour
         if (!Paused.activeSelf)
         {
             TrackMouse();
+
+            if (transform.position.normalized != clickPosition.normalized)
+                ChadAnimator.SetBool("IsRunning", true);
+            else
+                ChadAnimator.SetBool("IsRunning", false);
 
             if (!TOGGLE_ThirdPerson.activeSelf)
             {

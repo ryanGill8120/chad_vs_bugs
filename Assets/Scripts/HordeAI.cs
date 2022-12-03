@@ -10,15 +10,7 @@ public class HordeAI : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private float mRange;
     private float distance;
-    private enum EnemyTypeList
-    {
-        sugarAnt,
-        cockroach,
-        larva
-    };
-    [SerializeField] private EnemyTypeList enemyType = new EnemyTypeList();
     Animator enemyAnimator;
-
 
     private void Awake()
     {
@@ -33,6 +25,17 @@ public class HordeAI : MonoBehaviour
         LevelManager.instance.enemies.Add(gameObject);
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        distance = Vector3.Distance(target.transform.position, transform.position);
+
+        if (distance <= mRange)
+            larvaAttack();
+        else
+            moveToPlayer();
+    }
+
     void moveToPlayer()
     {
         Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
@@ -42,34 +45,10 @@ public class HordeAI : MonoBehaviour
 
     void larvaAttack()
     {
-
         //animation trigger
         enemyAnimator.SetTrigger("larvalAttack");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        distance = Vector3.Distance(target.transform.position, transform.position);
-        if (distance <= mRange)
-        {
-            larvaAttack();
-        }
-        else
-        {
-            moveToPlayer();
-        }
-        
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        //Didn't work as I thought, may have something to do with collision matrix and static colliders x rigidbody colliders.
-        //Triggers work, so using that for now.
-        //LightProjectile
-        //HeavyAttack
-        //LightAttack
-    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Weapon-WhiteWolfSword")
