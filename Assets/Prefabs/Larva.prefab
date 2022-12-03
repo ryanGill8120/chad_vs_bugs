@@ -131,8 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.75
   health: 1
-  mRange: 0.5
-  enemyType: 2
+  mRange: 0.1
 --- !u!95 &7203719938125094890
 Animator:
   serializedVersion: 4

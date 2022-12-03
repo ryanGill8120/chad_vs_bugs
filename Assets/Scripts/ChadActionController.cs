@@ -10,7 +10,10 @@ public class ChadActionController : MonoBehaviour
 
     [SerializeField]
     private GameObject LightProjectile;
-    Animator chadAnimator;
+    private Animator swordAnimator;
+    private Animator chadAnimator;
+    public GameObject Chad;
+    public GameObject Sword;
 
     private float nextLightTime = 0.0f;
     private float nextHeavyTime = 0.0f;
@@ -18,22 +21,24 @@ public class ChadActionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chadAnimator = GetComponentInChildren <Animator>();
+        chadAnimator = Chad.GetComponent<Animator>();
+        swordAnimator = Sword.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         // melee attack
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("Melee Attack!");
-            chadAnimator.SetTrigger("doAttack");
+            //swordAnimator.SetTrigger("doAttack");
+            swordAnimator.Play("RIG_Sword|ANIM_Swing");
+            swordAnimator.Play("RIG_Sword|ANIM_Idle");
         }
 
         // basic projectile
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (Time.time > nextLightTime)
             {
@@ -51,13 +56,11 @@ public class ChadActionController : MonoBehaviour
                 Debug.Log(" *** Light Attack! *** ");
             }
             else
-            {
                 Debug.Log("Light attack not ready!");
-            }
         }
 
         // large stun
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (Time.time > nextHeavyTime)
             {
@@ -65,16 +68,13 @@ public class ChadActionController : MonoBehaviour
                 Debug.Log(" *** Heavy Attack! *** ");
             }
             else
-            {
                 Debug.Log("Heavy attack not ready!");
-            }
-
         }
-
     }
 
     public void attackEnd()
     {
         chadAnimator.ResetTrigger("doAttack");
+        chadAnimator.ResetTrigger("notAttack");
     }
 }

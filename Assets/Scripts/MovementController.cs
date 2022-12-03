@@ -7,6 +7,7 @@ public class MovementController : MonoBehaviour
 {
     public GameObject CameraPivot;
     public GameObject ChadModel;
+    public GameObject ChadContainer;
     public GameObject TOGGLE_ContinuousMovement;
     public GameObject TOGGLE_ThirdPerson;
     public GameObject Paused;
@@ -35,6 +36,9 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ChadContainer.transform.position.y < 0)
+            ChadContainer.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
         if (!Paused.activeSelf)
         {
             TrackMouse();

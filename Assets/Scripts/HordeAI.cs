@@ -51,7 +51,7 @@ public class HordeAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Weapon-WhiteWolfSword")
+        if(other.gameObject.name == "WEAPON_White-Wolf-Sword")
         {
             health = health - 1;
             if (health == 0)
